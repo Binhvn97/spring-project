@@ -1,60 +1,31 @@
 package com.springdemo.binh97.dto.request;
 
+import com.springdemo.binh97.validation.ValidPassword;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 import java.time.LocalDate;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserCreateRequest {
-    private String username;
-    private String password;
-    private String email;
-    private String firstName;
-    private String lastName;
-    private LocalDate dob;
 
-    public String getUsername() {
-        return username;
-    }
+    @NotBlank(message = "USER_INVALID")
+    @Size(min = 3, message = "USER_INVALID")
+    String username;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    @NotBlank(message = "PASSWORD_INVALID")
+    @Size(min = 8, message = "PASSWORD_INVALID")
+    @ValidPassword(message = "PASSWORD_INVALID")
+    String password;
+    String email;
+    String firstName;
+    String lastName;
+    LocalDate dob;
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public LocalDate getDob() {
-        return dob;
-    }
-
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
 }

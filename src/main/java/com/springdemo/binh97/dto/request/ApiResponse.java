@@ -1,21 +1,17 @@
 package com.springdemo.binh97.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
-
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserUpdateRequest {
-
-    String password;
-    String email;
-    String firstName;
-    String lastName;
-    LocalDate dob;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ApiResponse<T> {
+    int code;
+    String message;
+    T result;
 }
