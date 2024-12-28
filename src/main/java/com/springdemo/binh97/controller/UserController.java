@@ -1,10 +1,15 @@
 package com.springdemo.binh97.controller;
 
-import com.springdemo.binh97.dto.request.ApiResponse;
+import com.springdemo.binh97.dto.response.ApiResponse;
 import com.springdemo.binh97.dto.request.UserCreateRequest;
+import com.springdemo.binh97.dto.request.UserUpdateRequest;
+import com.springdemo.binh97.dto.response.UserResponse;
 import com.springdemo.binh97.entity.User;
 import com.springdemo.binh97.service.UserService;
 import jakarta.validation.Valid;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +17,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class UserController {
 
     @Autowired
@@ -32,12 +39,12 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    User getUser(@PathVariable("userId") String userId) {
+    UserResponse getUser(@PathVariable("userId") String userId) {
         return userService.getUser(userId);
     }
 
     @PutMapping("/{userId}")
-    User updateUser(@PathVariable String userId, @RequestBody UserCreateRequest request) {
+    UserResponse updateUser(@PathVariable String userId, @RequestBody @Valid UserUpdateRequest request) {
         return userService.updateUser(userId, request);
     }
 

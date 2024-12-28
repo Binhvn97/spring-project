@@ -5,7 +5,9 @@ public enum ErrorCode {
     UNAUTHORIZED_ERROR(500, "Unauthorized error"),
     INVALID_CODE(500, "Invalid error code"),
     USER_INVALID(400,"Username must be at least 3 characters long and cannot be blank."),
-    PASSWORD_INVALID(400,"Password must be at least 8 characters long, cannot be blank, and must contain at least one uppercase letter and one special character.")
+    PASSWORD_INVALID(400,"Password must be at least 8 characters long, cannot be blank, and must contain at least one uppercase letter and one special character."),
+    USER_NOT_EXISTED(404,"User not found"),
+    UNAUTHORIZED(401,"Unauthorized")
     ;
 
     private int code;

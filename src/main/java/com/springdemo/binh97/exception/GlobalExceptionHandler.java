@@ -1,6 +1,6 @@
 package com.springdemo.binh97.exception;
 
-import com.springdemo.binh97.dto.request.ApiResponse;
+import com.springdemo.binh97.dto.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
