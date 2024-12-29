@@ -3,7 +3,7 @@ package com.springdemo.binh97.mapper;
 import com.springdemo.binh97.dto.request.UserCreateRequest;
 import com.springdemo.binh97.dto.request.UserUpdateRequest;
 import com.springdemo.binh97.dto.response.UserResponse;
-import com.springdemo.binh97.entity.User;
+import com.springdemo.binh97.entities.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 

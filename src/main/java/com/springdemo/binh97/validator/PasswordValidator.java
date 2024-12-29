@@ -1,4 +1,4 @@
-package com.springdemo.binh97.validation;
+package com.springdemo.binh97.validator;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
