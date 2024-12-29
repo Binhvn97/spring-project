@@ -1,6 +1,6 @@
 package com.springdemo.binh97.dto.request;
 
-import com.springdemo.binh97.validation.ValidPassword;
+import com.springdemo.binh97.validator.ValidPassword;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;

@@ -28,6 +28,8 @@ public class AuthenticationController {
     ApiResponse<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
         var result = authenticationService.authenticate(request);
         return ApiResponse.<AuthenticationResponse>builder()
+                .code(200)
+                .message("Success")
                 .result(result)
                 .build();
     }
@@ -37,6 +39,7 @@ public class AuthenticationController {
             throws ParseException, JOSEException {
         var result = authenticationService.inspect(request);
         return ApiResponse.<InspectResponse>builder()
+                .code(200)
                 .result(result)
                 .build();
     }

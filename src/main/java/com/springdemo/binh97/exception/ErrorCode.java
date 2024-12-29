@@ -1,5 +1,11 @@
 package com.springdemo.binh97.exception;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+
+@Getter
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public enum ErrorCode {
     USER_EXISTED(400,"User has been existed"),
     UNAUTHORIZED_ERROR(500, "Unauthorized error"),
@@ -10,19 +16,12 @@ public enum ErrorCode {
     UNAUTHORIZED(401,"Unauthorized")
     ;
 
-    private int code;
-    private String message;
+    int code;
+    String message;
 
     ErrorCode(int code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public int getCode() {
-        return code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 }
