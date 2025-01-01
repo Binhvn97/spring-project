@@ -1,12 +1,14 @@
 package com.springdemo.binh97.dto.request;
 
-import com.springdemo.binh97.validator.ValidPassword;
+import com.springdemo.binh97.validator.dob.ValidDob;
+import com.springdemo.binh97.validator.password.ValidPassword;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
@@ -22,6 +24,10 @@ public class UserUpdateRequest {
     String email;
     String firstName;
     String lastName;
+
+    @ValidDob(min = 10, message = "INVALID_DOB")
     LocalDate dob;
+
+    List<String> roles;
 
 }

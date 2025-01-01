@@ -1,4 +1,4 @@
-package com.springdemo.binh97.validator;
+package com.springdemo.binh97.validator.password;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

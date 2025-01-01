@@ -8,6 +8,7 @@ import com.springdemo.binh97.enums.Role;
 import com.springdemo.binh97.exception.AppException;
 import com.springdemo.binh97.exception.ErrorCode;
 import com.springdemo.binh97.mapper.UserMapper;
+import com.springdemo.binh97.repository.RoleRepository;
 import com.springdemo.binh97.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -27,9 +28,9 @@ import java.util.List;
 public class UserService {
 
     PasswordEncoder passwordEncoder;
-
-    private UserRepository userRepository;
-    private UserMapper userMapper;
+    RoleRepository roleRepository;
+    UserRepository userRepository;
+    UserMapper userMapper;
 
     public UserResponse createUser(UserCreateRequest request) {
 
@@ -42,7 +43,7 @@ public class UserService {
         HashSet<String> roles = new HashSet<>();
 
         roles.add(Role.USER.name());
-        user.setRoles(roles);
+//        user.setRoles(roles);
 
         return userMapper.toUserResponse(userRepository.save(user));
     }
@@ -74,10 +75,8 @@ public class UserService {
         userMapper.updateUser(user, request);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
-        HashSet<String> roles = new HashSet<>();
-
-        roles.add(Role.USER.name());
-        user.setRoles(roles);
+        var roles = roleRepository.findAllById(request.getRoles());
+        user.setRoles(new HashSet<>(roles));
 
         return userMapper.toUserResponse(userRepository.save(user));
     }

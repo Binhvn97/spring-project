@@ -1,6 +1,7 @@
 package com.springdemo.binh97.dto.request;
 
-import com.springdemo.binh97.validator.ValidPassword;
+import com.springdemo.binh97.validator.dob.ValidDob;
+import com.springdemo.binh97.validator.password.ValidPassword;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -26,6 +27,8 @@ public class UserCreateRequest {
     String email;
     String firstName;
     String lastName;
+
+    @ValidDob(min = 10, message = "INVALID_DOB")
     LocalDate dob;
 
 }
