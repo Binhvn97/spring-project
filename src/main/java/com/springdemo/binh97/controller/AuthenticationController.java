@@ -3,6 +3,7 @@ package com.springdemo.binh97.controller;
 import com.nimbusds.jose.JOSEException;
 import com.springdemo.binh97.dto.request.AuthenticationRequest;
 import com.springdemo.binh97.dto.request.InspectRequest;
+import com.springdemo.binh97.dto.request.LogoutRequest;
 import com.springdemo.binh97.dto.response.ApiResponse;
 import com.springdemo.binh97.dto.response.AuthenticationResponse;
 import com.springdemo.binh97.dto.response.InspectResponse;
@@ -38,6 +39,14 @@ public class AuthenticationController {
         return ApiResponse.<InspectResponse>builder()
                 .code(200)
                 .result(result)
+                .build();
+    }
+
+    @PostMapping("/logout")
+    ApiResponse<Void> logout(@RequestBody LogoutRequest request) throws ParseException, JOSEException {
+        authenticationService.logout(request);
+        return ApiResponse.<Void>builder()
+                .code(200)
                 .build();
     }
 }
