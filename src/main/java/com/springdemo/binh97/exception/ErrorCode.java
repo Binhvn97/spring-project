@@ -18,6 +18,7 @@ public enum ErrorCode {
     UNAUTHORIZED(401,"Unauthorized", HttpStatus.UNAUTHORIZED),
     ACCESS_DENIED(403,"Access denied", HttpStatus.FORBIDDEN),
     INVALID_DOB(400, "Your age must be at least {min}", HttpStatus.BAD_REQUEST),
+    EXPIRED_TOKEN(400, "Expired token", HttpStatus.FORBIDDEN),
     ;
 
     int code;

@@ -25,6 +25,7 @@ public class SecurityConfig {
             "/auth/login",
             "/auth/verify-token",
             "/auth/logout",
+            "/auth/refresh-token",
     };
 
     private static final String[] SWAGGER_ENDPOINTS = {

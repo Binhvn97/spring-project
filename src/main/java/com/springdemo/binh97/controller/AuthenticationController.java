@@ -4,6 +4,7 @@ import com.nimbusds.jose.JOSEException;
 import com.springdemo.binh97.dto.request.AuthenticationRequest;
 import com.springdemo.binh97.dto.request.InspectRequest;
 import com.springdemo.binh97.dto.request.LogoutRequest;
+import com.springdemo.binh97.dto.request.RefreshTokenRequest;
 import com.springdemo.binh97.dto.response.ApiResponse;
 import com.springdemo.binh97.dto.response.AuthenticationResponse;
 import com.springdemo.binh97.dto.response.InspectResponse;
@@ -47,6 +48,16 @@ public class AuthenticationController {
         authenticationService.logout(request);
         return ApiResponse.<Void>builder()
                 .code(200)
+                .build();
+    }
+
+    @PostMapping("/refresh-token")
+    ApiResponse<AuthenticationResponse> refreshToken(@RequestBody RefreshTokenRequest request) throws ParseException, JOSEException {
+        var result = authenticationService.refreshToken(request);
+        return ApiResponse.<AuthenticationResponse>builder()
+                .code(200)
+                .message("Success")
+                .result(result)
                 .build();
     }
 }
