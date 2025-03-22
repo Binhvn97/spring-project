@@ -100,4 +100,57 @@ public class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("message")
                         .value("Username must be at least 3 characters long and cannot be blank."));
     }
+
+    @Test
+    void createUser_blankUsername_fail() throws Exception {
+
+        userCreateRequest.setUsername("");
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        String content = objectMapper.writeValueAsString(userCreateRequest);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/users")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(content))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.jsonPath("code").value(400))
+                .andExpect(MockMvcResultMatchers.jsonPath("message")
+                .value("Username must be at least 3 characters long and cannot be blank."));
+    }
+
+    @Test
+    void createUser_invalidPassword_fail() throws Exception {
+        userCreateRequest.setPassword("abc123");
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        String content = objectMapper.writeValueAsString(userCreateRequest);
+
+        mockMvc.perform(MockMvcRequestBuilders
+        .post("/users")
+        .contentType(MediaType.APPLICATION_JSON_VALUE)
+        .content(content))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.jsonPath("code").value(400))
+                .andExpect(MockMvcResultMatchers.jsonPath("message")
+                .value("Password must be at least 8 characters long, cannot be blank, and must contain at least one uppercase letter and one special character."));
+    }
+
+    @Test
+    void createUser_invalidDob_fail() throws Exception {
+        userCreateRequest.setDob(LocalDate.parse("2022-02-03"));
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        String content = objectMapper.writeValueAsString(userCreateRequest);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/users")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(content))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.jsonPath("code").value(400))
+                .andExpect(MockMvcResultMatchers.jsonPath("message")
+                .value("Your age must be at least 10"));
+    }
+
 }
