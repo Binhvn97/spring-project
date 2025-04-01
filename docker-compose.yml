@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: binh_service
+      MYSQL_USER: springproject
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  springboot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: springboot-container
+    depends_on:
+      - mysql
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/binh_service
+      SPRING_DATASOURCE_USERNAME: springproject
+      SPRING_DATASOURCE_PASSWORD: admin
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql_data:
+    driver: local

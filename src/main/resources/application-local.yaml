@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /identity
+
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/identity_service"
+    driverClassName: "com.mysql.cj.jdbc.Driver"
+    username: springproject
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update #Using auto update schema at first
+    show-sql: true
+jwt:
+  signerKey: "bVj8E7AghznHPjDjnE1EEQaNsEv7qFqRVxBv3IeupvzEJD5fOgly6C1s3S6qiXLY"
+  valid-duration: 3600 # in second
+  refreshable-duration: 36000 # in seconds
+
+#logging:
+#  level:
+#    org.springframework: DEBUG
+#    com.example.myapp: INFO
+#  file:
+#    path: logs/myapp.log
+
+
+

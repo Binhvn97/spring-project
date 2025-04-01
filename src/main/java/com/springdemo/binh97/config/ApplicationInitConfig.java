@@ -35,13 +35,13 @@ public class ApplicationInitConfig {
 
                 User user = User.builder()
                         .username("admin")
-                        .password(passwordEncoder.encode("admin"))
+                        .password(passwordEncoder.encode("Admin@123"))
 //                        .roles(role)
                         .build();
 
                 userRepository.save(user);
 
-                log.warn("Admin user have been created with default password is admin, please change it");
+                log.warn("Admin user have been created with default password is Admin@123, please change it");
 
             }
         };
