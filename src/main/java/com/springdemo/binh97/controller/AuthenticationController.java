@@ -1,14 +1,13 @@
 package com.springdemo.binh97.controller;
 
 import com.nimbusds.jose.JOSEException;
-import com.springdemo.binh97.dto.request.AuthenticationRequest;
-import com.springdemo.binh97.dto.request.InspectRequest;
-import com.springdemo.binh97.dto.request.LogoutRequest;
-import com.springdemo.binh97.dto.request.RefreshTokenRequest;
+import com.springdemo.binh97.dto.request.*;
 import com.springdemo.binh97.dto.response.ApiResponse;
 import com.springdemo.binh97.dto.response.AuthenticationResponse;
 import com.springdemo.binh97.dto.response.InspectResponse;
+import com.springdemo.binh97.dto.response.UserResponse;
 import com.springdemo.binh97.service.AuthenticationService;
+import com.springdemo.binh97.service.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -22,6 +21,7 @@ import java.text.ParseException;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthenticationController {
     AuthenticationService authenticationService;
+    UserService userService;
 
     @PostMapping("/login")
     ApiResponse<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
@@ -31,6 +31,15 @@ public class AuthenticationController {
                 .message("Success")
                 .result(result)
                 .build();
+    }
+
+    @PostMapping("/register")
+    ApiResponse<UserResponse> register(@RequestBody UserCreateRequest request) {
+        ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
+        apiResponse.setResult(userService.createUser(request));
+        apiResponse.setMessage("Created successfully");
+        apiResponse.setCode(200);
+        return apiResponse;
     }
 
     @PostMapping("/verify-token")
