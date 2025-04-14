@@ -1,4 +1,4 @@
-package com.springdemo.binh97.entities;
+package com.springdemo.binh97.entities.user;
 
 import jakarta.persistence.*;
 import lombok.*;

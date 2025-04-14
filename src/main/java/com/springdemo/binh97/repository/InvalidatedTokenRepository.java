@@ -1,6 +1,6 @@
 package com.springdemo.binh97.repository;
 
-import com.springdemo.binh97.entities.InvalidToken;
+import com.springdemo.binh97.entities.user.InvalidToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

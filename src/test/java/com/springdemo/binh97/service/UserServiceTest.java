@@ -2,7 +2,7 @@ package com.springdemo.binh97.service;
 
 import com.springdemo.binh97.dto.request.UserCreateRequest;
 import com.springdemo.binh97.dto.response.UserResponse;
-import com.springdemo.binh97.entities.User;
+import com.springdemo.binh97.entities.user.User;
 import com.springdemo.binh97.repository.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

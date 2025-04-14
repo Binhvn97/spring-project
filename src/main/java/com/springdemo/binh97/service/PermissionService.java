@@ -2,7 +2,7 @@ package com.springdemo.binh97.service;
 
 import com.springdemo.binh97.dto.request.PermissionRequest;
 import com.springdemo.binh97.dto.response.PermissionResponse;
-import com.springdemo.binh97.entities.Permission;
+import com.springdemo.binh97.entities.user.Permission;
 import com.springdemo.binh97.mapper.PermissionMapper;
 import com.springdemo.binh97.repository.PermissionRepository;
 import lombok.AccessLevel;

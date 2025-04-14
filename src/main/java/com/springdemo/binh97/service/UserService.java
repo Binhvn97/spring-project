@@ -3,7 +3,7 @@ package com.springdemo.binh97.service;
 import com.springdemo.binh97.dto.request.UserCreateRequest;
 import com.springdemo.binh97.dto.request.UserUpdateRequest;
 import com.springdemo.binh97.dto.response.UserResponse;
-import com.springdemo.binh97.entities.User;
+import com.springdemo.binh97.entities.user.User;
 import com.springdemo.binh97.enums.Role;
 import com.springdemo.binh97.exception.AppException;
 import com.springdemo.binh97.exception.ErrorCode;

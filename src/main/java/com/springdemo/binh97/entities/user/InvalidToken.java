@@ -1,9 +1,11 @@
-package com.springdemo.binh97.entities;
+package com.springdemo.binh97.entities.user;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -12,9 +14,9 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Permission {
+public class InvalidToken {
     @Id
-    String name;
-    String description;
+    String id;
+    Date expiryDate;
 
 }

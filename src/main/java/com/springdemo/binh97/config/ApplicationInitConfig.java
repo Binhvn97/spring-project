@@ -1,6 +1,6 @@
 package com.springdemo.binh97.config;
 
-import com.springdemo.binh97.entities.User;
+import com.springdemo.binh97.entities.user.User;
 import com.springdemo.binh97.enums.Role;
 import com.springdemo.binh97.repository.UserRepository;
 import lombok.AccessLevel;
